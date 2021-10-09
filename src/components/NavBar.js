@@ -32,6 +32,9 @@ export const NavBar = () => (
           <Nav.Item>
             <Nav.Link href="/mapview">Violation Map</Nav.Link>
           </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/adminview">Admin View</Nav.Link>
+          </Nav.Item>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
