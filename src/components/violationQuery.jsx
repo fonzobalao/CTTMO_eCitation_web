@@ -3,7 +3,13 @@ import firebase from "./Firebase/firebase";
 import Container from "react-bootstrap/Container";
 import MapView2 from "./MapView2";
 import styled from "styled-components";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, WebMercatorViewport } from "react-map-gl";
+import mapboxgl from 'mapbox-gl';
+import marker from "./mapmarker.png";
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+
 
 const Styles = styled.div`
   div,
@@ -52,7 +58,7 @@ export const ViolationQuery = () => {
   const [viewport, setViewport] = useState({
     latitude: parseFloat("7.0644123"),
     longitude: parseFloat("125.6090916"),
-    zoom: 15,
+    zoom: 14,
     height: "60vh",
     width: "calc(80vw-80px)",
   });
@@ -130,7 +136,9 @@ export const ViolationQuery = () => {
                 <Marker
                   latitude={parseFloat(driver.latitude)}
                   longitude={parseFloat(driver.longitude)}
-                ><img src="mapmarker.png"></img></Marker>
+                >
+                  <img src={marker} alt="" />
+                </Marker>
               </ReactMapGL>
               </div>
           </div>
